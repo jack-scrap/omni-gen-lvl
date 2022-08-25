@@ -1,7 +1,5 @@
 CXX=g++
 
-.PHONY: clean
-
 HDR=json.hpp
 
 all: make
@@ -12,5 +10,6 @@ main.o: main.cpp
 make: main.o $(HDR)
 	$(CXX) $<
 
+.PHONY: clean
 clean:
 	rm *.o a.out
