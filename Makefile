@@ -5,14 +5,13 @@ CXX=g++
 HDR=json.hpp
 
 .PHONY: all
-all: make
+all: omni_gen_lvl
 
 main.o: main.cpp
 	$(CXX) -c $< -o $@
 
-.PHONY: make
-make: main.o $(HDR)
-	$(CXX) $< -o omni_gen_lvl
+omni_gen_lvl: main.o $(HDR)
+	$(CXX) $< -o $@
 
 .PHONY: clean
 clean:
