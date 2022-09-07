@@ -12,8 +12,8 @@ main.o: main.cpp
 
 .PHONY: make
 make: main.o $(HDR)
-	$(CXX) $<
+	$(CXX) $< -o omni_gen_lvl
 
 .PHONY: clean
 clean:
-	rm *.o a.out
+	rm *.o omni_gen_lvl
