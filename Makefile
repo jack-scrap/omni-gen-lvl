@@ -2,6 +2,10 @@ SH=/bin/bash
 
 CXX=g++
 
+PREFIX:=/usr/local
+
+BINDIR:=$(PREFIX)/bin
+
 HDR=json.hpp
 
 .PHONY: all
@@ -12,6 +16,10 @@ main.o: main.cpp
 
 omni_gen_lvl: main.o $(HDR)
 	$(CXX) $< -o $@
+
+.PHONY: install
+install:
+	sudo cp omni_gen_lvl $(BINDIR)
 
 .PHONY: clean
 clean:
