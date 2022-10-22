@@ -9,7 +9,7 @@ BINDIR:=$(PREFIX)/bin
 SRCS:=layout.cpp
 OBJS:=$(SRC:%.cpp=%.o)
 
-HDR=json.hpp
+HDRS=json.hpp
 
 .PHONY: all
 all: omni_gen_lvl
@@ -20,7 +20,7 @@ all: omni_gen_lvl
 main.o: main.cpp
 	$(CXX) -c $< -o $@
 
-omni_gen_lvl: main.o $(OBJS) $(HDR)
+omni_gen_lvl: main.o $(OBJS) $(HDRS)
 	$(CXX) $< -o $@
 
 .PHONY: install
