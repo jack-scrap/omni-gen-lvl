@@ -2,6 +2,8 @@ SH=/bin/bash
 
 CXX=g++
 
+BUILDDIR:=build
+
 PREFIX:=/usr/local
 
 BINDIR:=$(PREFIX)/bin
@@ -12,16 +14,20 @@ OBJS:=$(SRC:%.cpp=%.o)
 HDRS=json.hpp
 
 .PHONY: all
-all: omni_gen_lvl
+all: mk_build omni_gen_lvl
 
 %.o: %.cpp %.h
 	$(CXX) -c $< -o $@
 
-main.o: main.cpp
+$(BUILDDIR)/main.o: main.cpp
 	$(CXX) -c $< -o $@
 
-omni_gen_lvl: main.o $(OBJS) $(HDRS)
+omni_gen_lvl: $(BUILDDIR)/main.o $(OBJS) $(HDRS)
 	$(CXX) $< -o $@
+
+.PHONY: mk_build
+mk_build:
+	mkdir -p $(BUILDDIR)
 
 .PHONY: install
 install:
@@ -29,4 +35,4 @@ install:
 
 .PHONY: clean
 clean:
-	rm *.o omni_gen_lvl
+	rm $(BUILDDIR)/*.o omni_gen_lvl
