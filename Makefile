@@ -11,7 +11,7 @@ BINDIR:=$(PREFIX)/bin
 SRCS:=layout.cpp
 OBJS:=$(SRC:%.cpp=%.o)
 
-HDRS=json.hpp
+HDRS=std_data.h json.hpp
 
 .PHONY: all
 all: mk_build omni_gen_lvl
